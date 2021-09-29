@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+<h1>Post your Feedback</h1>
+<form method="POST">
+    <div class="form-group">
+        {{form.hidden_tag() }}
+        {{form.title.label}}
+        {{form.title}}
+        {{form.content.label}}
+        {{form.content}}
+    <button class="login-submit">Submit</button>
+  </form>
+</div>
+
+{% endblock %}

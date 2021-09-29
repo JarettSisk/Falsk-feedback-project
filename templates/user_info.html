@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+
+{% block content %}
+    <h1>Welcome <span class="username_title">{{user.username}}</span></h1>
+    <ul>
+        <li>Email: {{user.email}}</li>
+        <li>First Name: {{user.first_name}}</li>
+        <li>Last Name: {{user.last_name}}</li>
+    </ul>
+    <form action="/users/{{user.username}}/delete" method="POST">
+        <button type="submit">Delete User</button>
+    </form>
+
+    <h2>Feedback</h2>
+    <button onclick="document.location='/users/{{user.username}}/feedback/add'" class="add-feebback-button">Add Feedback</button>
+    <ul class="feedback-posts">
+        {% for post in posts %}
+        <li class="post">
+            <h3 class="post-title">{{post.title}}</h3>
+            <p class="post-content">{{post.content}}</p>
+            <button onclick="document.location='/feedback/{{post.id}}/edit'">Edit</button>
+            <form action="/feedback/{{post.id}}/delete" method="POST" style="display: inline;">
+                <button type="submit">Delete</button>
+            </form>
+            
+        </li>
+        {% endfor %}
+    </ul>
+  
+
+{% endblock %}
